@@ -61,6 +61,18 @@ class HashMap
 
   def keys
     # returns an array containing all the keys inside the hashmap
+    puts "\nHere are the keys in the HashMap:"
+    bucket_keys = []
+
+    @buckets.each do |bucket|
+      next if bucket.nil?
+
+      bucket.each do |pair|
+        bucket.keys.push(pair[0])
+      end
+    end
+
+    bucket_keys
   end
 
   def values
