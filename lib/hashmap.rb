@@ -68,7 +68,7 @@ class HashMap
       next if bucket.nil?
 
       bucket.each do |pair|
-        bucket.keys.push(pair[0])
+        bucket_keys.push(pair[0])
       end
     end
 
