@@ -38,14 +38,17 @@ class HashMap
   end
 
   def get(key)
+    #TODO
     # takes the arguement "key" and returns the value assigned to it.
   end
 
   def has?(key)
+    #TODO
     # takes a key as argument and returns "true" or "false" based on whether or not the key is in the hashmap
   end
 
   def remove(key)
+    #TODO
     # takes a key as arguement. If the given key is in the hash map, it should remove the entry with that key
     # and return the deleted entry's value. If the key isn't in the hashmap it should return "nil"
   end
