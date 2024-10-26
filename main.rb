@@ -7,3 +7,4 @@ require_relative "lib/hashmap"
 
 test = HashMap.new
 
+test.set("Ryan", "Dad")

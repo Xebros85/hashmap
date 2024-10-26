@@ -2,23 +2,39 @@
 # Hashmap class
 
 class HashMap
-  def initialize
-    puts "HashMap booting up..."
+  def initialize    
+    @bucket_size = 16
+    @buckets = Array.new(@bucket_size)
   end
 
-  def hash(key)
+  def hash(key)    
     hash_code = 0
     prime_number = 31
 
     key.each_char { |char| hash_code = prime_number * hash_code + char.ord }
 
-    hash_code
+    hash_code % @bucket_size
   end
 
   def set(key, value)
     # Takes two arguments : "key" and "value" assigned to this key
     # If key already exists, then the old value is overwritten or we can say that we update the key's value
-    
+    index = hash(key)
+    puts "Index: #{index}"
+    @buckets[index] ||= []
+
+    found_index = false
+
+    @buckets[index].each do |pair|
+      next unless pair[0] == key
+      pair[1] = value
+      found_index = true
+      break
+    end
+
+    @buckets[index].push([key, value]) unless found_index
+    load_factor = length.to_f / @bucket_size
+    puts "Load Factor: #{load_factor}"
   end
 
   def get(key)
@@ -40,6 +56,7 @@ class HashMap
 
   def clear
     # removes ALL entries in the hashmap
+    self.HashMap.initialize
   end
 
   def keys
