@@ -8,3 +8,6 @@ require_relative "lib/hashmap"
 test = HashMap.new
 
 test.set("Ryan", "Dad")
+
+p test.entries
+p test.values

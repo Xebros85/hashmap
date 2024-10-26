@@ -20,7 +20,7 @@ class HashMap
     # Takes two arguments : "key" and "value" assigned to this key
     # If key already exists, then the old value is overwritten or we can say that we update the key's value
     index = hash(key)
-    puts "Index: #{index}"
+    puts "Key: #{key} => Index: #{index}"
     @buckets[index] ||= []
 
     found_index = false
@@ -65,11 +65,35 @@ class HashMap
 
   def values
     # returns an array containing all the values
+    puts "\nHere are the values in the HashMap:"
+    bucket_values = []
+
+    @buckets.each do |bucket|
+      next if bucket.nil?
+
+      bucket.each do |pair|
+        bucket_values.push(pair[1])
+      end
+    end
+
+    bucket_values
   end
 
   def entries
     # returns an array that contains each "key", "value" pair.
     # Example: [[first_key, first_value], [second_key, second_value]]
+    puts "\nHere are the entries in the HashMap:"
+    bucket_entries = []
+
+    @buckets.each do |bucket|
+      next if bucket.nil?
+
+      bucket.each do |pair|
+        bucket_entries.push(pair)
+      end
+    end
+
+    bucket_entries
   end
 
 end
