@@ -52,11 +52,18 @@ class HashMap
 
   def length
     # returns the number of stored keys in the hashmap
+    count = 0
+
+    @buckets.each do |bucket|
+      count += bucket.length unless bucket.nil?
+    end
+    count
   end
 
   def clear
     # removes ALL entries in the hashmap
-    self.HashMap.initialize
+    puts "\nAll values reset."
+    self.initialize
   end
 
   def keys

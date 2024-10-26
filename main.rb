@@ -15,3 +15,10 @@ test.set("Jaxon", "Brother")
 p test.entries
 p test.keys
 p test.values
+
+p test.length
+# test.clear
+
+# p test.entries
+# p test.keys
+# p test.values
