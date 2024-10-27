@@ -16,6 +16,11 @@ p test.entries
 p test.keys
 p test.values
 
+puts "\nThe value for key 'Ryan' is:"
+p test.get("Ryan")
+p test.has?("Ryan")
+ 
+
 p test.length
 # test.clear
 

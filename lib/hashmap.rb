@@ -38,19 +38,35 @@ class HashMap
   end
 
   def get(key)
-    #TODO
     # takes the arguement "key" and returns the value assigned to it.
+    index = hash(key)
+
+    return nil if @buckets[index].nil?
+
+    @buckets[index].each do |pair|
+      return pair[1] if pair[0] == key
+    end
+    nil
   end
 
   def has?(key)
-    #TODO
     # takes a key as argument and returns "true" or "false" based on whether or not the key is in the hashmap
+    return true unless get(key).nil?
+    false
   end
 
   def remove(key)
-    #TODO
     # takes a key as arguement. If the given key is in the hash map, it should remove the entry with that key
     # and return the deleted entry's value. If the key isn't in the hashmap it should return "nil"
+    index = hash(key)
+
+    return nil if @buckets[index].nil?
+
+    @buckets[index].each_with_index do |pair, p_index|
+      next unless pair[0] == key
+      @buckets[index].delete_at(p_index)
+      return pair[1]
+    end
   end
 
   def length
