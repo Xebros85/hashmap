@@ -2,7 +2,8 @@
 # Hashmap class
 
 class HashMap
-  def initialize    
+  def initialize
+    @max_load_factor = 0.75    
     @bucket_size = 16
     @buckets = Array.new(@bucket_size)
   end
@@ -35,6 +36,23 @@ class HashMap
     @buckets[index].push([key, value]) unless found_index
     load_factor = length.to_f / @bucket_size
     puts "Load Factor: #{load_factor}"
+    resize_map if load_factor > @max_load_factor
+  end
+
+  def resize_map
+    @bucket_size *= 2
+    more_buckets = Array.new(@bucket_size)
+
+    @buckets.each do |bucket|
+      next if bucket.nil?
+
+      bucket.each do |pair|
+        index = hash(pair[0])
+        more_buckets[index] ||= []
+        more_buckets[index].push(pair)
+      end
+    end
+    @buckets = more_buckets
   end
 
   def get(key)
