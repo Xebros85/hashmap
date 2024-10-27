@@ -5,6 +5,7 @@
 
 require_relative "lib/hashmap"
 
+
 test = HashMap.new
 
 test.set('apple', 'red')
@@ -20,20 +21,17 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-puts "\nLength of HashMap: #{test.length}"
+test.show_stats
+
 p test.entries
+p test.keys
 
-
-
-# p test.keys
-# p test.values
-
- 
-
-
-
-
-
-
-# test.clear
+# test.set("apple", "green")
 # p test.entries
+
+test.set("moon", "silver")
+p test.entries
+p test.get("carrot")
+
+
+test.show_stats

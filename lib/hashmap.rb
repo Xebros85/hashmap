@@ -21,7 +21,7 @@ class HashMap
     # Takes two arguments : "key" and "value" assigned to this key
     # If key already exists, then the old value is overwritten or we can say that we update the key's value
     index = hash(key)
-    puts "Key: #{key} => Index: #{index}"
+    # puts "Key: #{key} => Index: #{index}"
     @buckets[index] ||= []
 
     found_index = false
@@ -34,9 +34,23 @@ class HashMap
     end
 
     @buckets[index].push([key, value]) unless found_index
-    load_factor = length.to_f / @bucket_size
-    puts "Load Factor: #{load_factor}"
-    resize_map if load_factor > @max_load_factor
+    @load_factor = length.to_f / @bucket_size
+    puts "Load Factor: #{@load_factor}"
+    resize_map if @load_factor > @max_load_factor
+  end
+
+  def show_stats
+    show_bucket_size
+    puts "Length: #{length}"
+    show_load_factor
+  end
+
+  def show_load_factor
+    puts "Load Factor: #{@load_factor}"
+  end
+
+  def show_bucket_size
+    puts "\nBucket size: #{@bucket_size}"
   end
 
   def resize_map
